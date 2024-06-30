@@ -16,12 +16,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WeatherProvider weatherProviderfalse =
+    WeatherProvider weatherProviderFalse =
         Provider.of<WeatherProvider>(context, listen: false);
     TextEditingController searchController =
         TextEditingController(text: 'Surat');
 
-    String backgroundImage = 'assets/img/3.gif'; // Default image
+    String backgroundImage = 'assets/img/4.gif'; // Default image
     if (weatherProvider.weather != null) {
       String condition = weatherProvider
           .weather!.currentModal.conditionModel.text
@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     Icon(Icons.menu, size: 35, color: Colors.white),
                     SizedBox(width: 25),
                     Text(
-                      'Surat',
+                      weatherProvider.weather!.locationModal.name.toString(),
                       style: TextStyle(
                           color: Colors.white,
                           letterSpacing: 1,
@@ -73,8 +73,8 @@ class HomeScreen extends StatelessWidget {
               TextFormField(
                 controller: searchController,
                 decoration: InputDecoration(
-                    prefixIcon: Spacer(),
-                    suffixIcon: Icon(Icons.search),
+                    prefixIcon: Icon(Icons.search),
+                    // Replace Spacer with an Icon or SizedBox
                     hintText: 'Search City',
                     fillColor: Colors.white,
                     filled: true,
@@ -82,18 +82,19 @@ class HomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15)),
                     contentPadding: EdgeInsets.symmetric(vertical: 10)),
                 onFieldSubmitted: (value) {
+                  weatherProviderFalse.fetchData(searchController.text);
                   searchController.clear();
                 },
               ),
               SizedBox(height: 60),
               Text(
-                '31°',
+                "${weatherProvider.weather!.currentModal.tempC.toInt()}°",
                 style: TextStyle(fontSize: 100, color: Colors.white),
               ),
               Row(
                 children: [
                   Text(
-                    'Mostly Cloudy',
+                    'Light rain shower',
                     style: TextStyle(
                         color: Colors.white,
                         letterSpacing: 1,
@@ -101,12 +102,19 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   ),
                   SizedBox(width: 25),
-                  Image.network('https://cdn.weatherapi.com/weather/64x64/day/353.png',height: 45,)
+                  Image.network(
+                    'https:${weatherProvider.weather!.currentModal.conditionModel.icon}',
+                    height: 45,
+                    errorBuilder: (BuildContext context, Object exception,
+                        StackTrace? stackTrace) {
+                      return Icon(Icons.error, color: Colors.red);
+                    },
+                  ),
                 ],
               ),
               SizedBox(height: 25),
               Text(
-                '32° / 27° Feels like',
+                '${weatherProvider.weather!.currentModal.tempC.toInt()}° / ${weatherProvider.weather!.currentModal.feelsLikeC.toInt()}° Feels like',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

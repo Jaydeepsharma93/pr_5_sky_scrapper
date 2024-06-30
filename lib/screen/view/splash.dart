@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pr_5_sky_scrapper/screen/view/homeScreen.dart';
 import 'package:provider/provider.dart';
-
+import 'homeScreen.dart';
 import '../controler/api_provider.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -10,11 +9,20 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WeatherProvider weatherProviderTrue = Provider.of<WeatherProvider>(context);
-    Future.delayed(Duration(seconds: 4),() {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen(weatherProvider: weatherProviderTrue,),));
-    },);
+    Future.delayed(Duration(seconds: 4), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(
+            weatherProvider: weatherProviderTrue,
+          ),
+        ),
+      );
+    });
+
     return Scaffold(
-      body: Center(child: Image.asset('assets/img/logo.png')),
+      body: Center(
+        child: Image.asset('assets/img/logo.png'),
+      ),
     );
   }
 }
