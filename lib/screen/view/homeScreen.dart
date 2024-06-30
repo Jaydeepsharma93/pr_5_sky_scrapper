@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
 
   final WeatherProvider weatherProvider;
 
+
   @override
   Widget build(BuildContext context) {
     WeatherProvider weatherProviderFalse =
