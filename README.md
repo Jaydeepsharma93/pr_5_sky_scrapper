@@ -1,16 +1,13 @@
 # pr_5_sky_scrapper
 
-A new Flutter project.
+<img src="https://github.com/Jaydeepsharma93/pr_5_sky_scrapper/assets/143181361/552386ac-71a2-452c-aa59-e3c4c1af3e27" width = 32%>
+<img src="https://github.com/Jaydeepsharma93/pr_5_sky_scrapper/assets/143181361/cf022c15-f9c6-4363-a137-fc9214626e40" width = 32%>
+<img src="https://github.com/Jaydeepsharma93/pr_5_sky_scrapper/assets/143181361/8792d934-9005-492e-a544-5527009b4655" width = 32%>
+<img src="https://github.com/Jaydeepsharma93/pr_5_sky_scrapper/assets/143181361/3a49bc2d-d1be-48db-811c-aac9575e7b7a" width = 32%>
 
-## Getting Started
+<video src="https://github.com/Jaydeepsharma93/pr_5_sky_scrapper/assets/143181361/5d29ad25-3bee-472c-a7ed-92675519928a" width = 32%>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
