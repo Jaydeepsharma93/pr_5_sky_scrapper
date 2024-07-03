@@ -1,9 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-
 import '../controler/api_provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,13 +10,11 @@ class HomeScreen extends StatelessWidget {
 
   final WeatherProvider weatherProvider;
 
-
   @override
   Widget build(BuildContext context) {
     WeatherProvider weatherProviderFalse =
         Provider.of<WeatherProvider>(context, listen: false);
-    TextEditingController searchController =
-        TextEditingController(text: 'Surat');
+    TextEditingController searchController = TextEditingController();
 
     String backgroundImage = 'assets/img/4.gif'; // Default image
     if (weatherProvider.weather != null) {
@@ -48,75 +42,75 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               SafeArea(
                 child: Row(
                   children: [
-                    Icon(Icons.menu, size: 35, color: Colors.white),
-                    SizedBox(width: 25),
+                    const Icon(Icons.menu, size: 35, color: Colors.white),
+                    const SizedBox(width: 25),
                     Text(
                       weatherProvider.weather!.locationModal.name.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
                           letterSpacing: 1,
                           fontSize: 24,
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(width: 8),
-                    Icon(
+                    const SizedBox(width: 8),
+                    const Icon(
                       Icons.location_on,
                       color: Colors.white,
                     )
                   ],
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextFormField(
                 controller: searchController,
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     // Replace Spacer with an Icon or SizedBox
                     hintText: 'Search City',
                     fillColor: Colors.white,
                     filled: true,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15)),
-                    contentPadding: EdgeInsets.symmetric(vertical: 10)),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 10)),
                 onFieldSubmitted: (value) {
                   weatherProviderFalse.fetchData(searchController.text);
                   searchController.clear();
                 },
               ),
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               Text(
                 "${weatherProvider.weather!.currentModal.tempC.toInt()}°",
-                style: TextStyle(fontSize: 100, color: Colors.white),
+                style: const TextStyle(fontSize: 100, color: Colors.white),
               ),
               Row(
                 children: [
                   Text(
-                    'Light rain shower',
-                    style: TextStyle(
+                    weatherProvider.weather!.currentModal.conditionModel.text,
+                    style: const TextStyle(
                         color: Colors.white,
                         letterSpacing: 1,
                         fontSize: 22,
                         fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
                   Image.network(
                     'https:${weatherProvider.weather!.currentModal.conditionModel.icon}',
                     height: 45,
                     errorBuilder: (BuildContext context, Object exception,
                         StackTrace? stackTrace) {
-                      return Icon(Icons.error, color: Colors.red);
+                      return const Icon(Icons.error, color: Colors.red);
                     },
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Text(
                 '${weatherProvider.weather!.currentModal.tempC.toInt()}° / ${weatherProvider.weather!.currentModal.feelsLikeC.toInt()}° Feels like',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     letterSpacing: 1,
